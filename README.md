@@ -17,7 +17,7 @@ Serão criados quatro imagens/containers:
 - nginx
 - mysql
 
-Após criadas as imagens, podemos apenas rodar o camando a seguir para subir os containers:
+Após criadas as imagens, podemos apenas rodar o comando a seguir para subir os containers:
 
 make docker-up
 
@@ -27,6 +27,6 @@ make docker-down
 
 O arquivo .env contém as variáveis de ambiente para configurar o sistema.
 
-Porta do servidor http: 8090
+Endereço e Porta do servidor http mapeado para o host: localhost:8090
 
 O docker-compose.yml contém as configurações de rede internas dos containers e mapeamentos entre os arquivos de sistema.
