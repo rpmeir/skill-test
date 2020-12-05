@@ -1,4 +1,10 @@
 <?php
+
+use Adianti\Database\TCriteria;
+use Adianti\Database\TFilter;
+use Adianti\Database\TRecord;
+use Adianti\Database\TRepository;
+
 /**
  * Atendimento Active Record
  * @author  <your-name-here>
@@ -147,15 +153,15 @@ class Atendimento extends TRecord
     {
     
         // load the related Canal objects
-        $repository = new TRepository('AtendimentoCanal');
+        $repository = new TRepository('CanalAtendimento');
         $criteria = new TCriteria;
         $criteria->add(new TFilter('atendimento_id', '=', $id));
-        $atendimento_canals = $repository->load($criteria);
-        if ($atendimento_canals)
+        $canal_atendimentos = $repository->load($criteria);
+        if ($canal_atendimentos)
         {
-            foreach ($atendimento_canals as $atendimento_canal)
+            foreach ($canal_atendimentos as $canal_atendimento)
             {
-                $canal = new Canal( $atendimento_canal->canal_id );
+                $canal = new Canal( $canal_atendimento->canal_id );
                 $this->addCanal($canal);
             }
         }
@@ -172,17 +178,17 @@ class Atendimento extends TRecord
         // store the object itself
         parent::store();
     
-        // delete the related AtendimentoCanal objects
+        // delete the related CanalAtendimento objects
         $criteria = new TCriteria;
         $criteria->add(new TFilter('atendimento_id', '=', $this->id));
-        $repository = new TRepository('AtendimentoCanal');
+        $repository = new TRepository('CanalAtendimento');
         $repository->delete($criteria);
-        // store the related AtendimentoCanal objects
+        // store the related CanalAtendimento objects
         if ($this->canals)
         {
             foreach ($this->canals as $canal)
             {
-                $atendimento_canal = new AtendimentoCanal;
+                $atendimento_canal = new CanalAtendimento;
                 $atendimento_canal->canal_id = $canal->id;
                 $atendimento_canal->atendimento_id = $this->id;
                 $atendimento_canal->store();
@@ -197,8 +203,8 @@ class Atendimento extends TRecord
     public function delete($id = NULL)
     {
         $id = isset($id) ? $id : $this->id;
-        // delete the related AtendimentoCanal objects
-        $repository = new TRepository('AtendimentoCanal');
+        // delete the related CanalAtendimento objects
+        $repository = new TRepository('CanalAtendimento');
         $criteria = new TCriteria;
         $criteria->add(new TFilter('atendimento_id', '=', $id));
         $repository->delete($criteria);

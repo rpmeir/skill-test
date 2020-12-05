@@ -1,4 +1,16 @@
 <menu>
+    <menuitem label='Overview'>
+        <icon>fas:chart-pie fa-fw</icon>
+        <action>OverviewAtendimentoView</action>
+    </menuitem>
+    <menuitem label='Atendimentos'>
+        <icon>fas:ticket-alt fa-fw</icon>
+        <action>AtendimentoDataGridView</action>
+    </menuitem>
+    <menuitem label='Clientes'>
+        <icon>fas:user fa-fw</icon>
+        <action>ClienteDataGridView</action>
+    </menuitem>
     <menuitem label='_t{Administration}'>
         <icon>fas:home fa-fw</icon>
         <menu>

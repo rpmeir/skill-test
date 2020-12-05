@@ -1,4 +1,9 @@
 <?php
+
+use Adianti\Database\TCriteria;
+use Adianti\Database\TFilter;
+use Adianti\Database\TRecord;
+
 /**
  * Canal Active Record
  * @author  <your-name-here>

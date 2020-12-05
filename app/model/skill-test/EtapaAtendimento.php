@@ -1,4 +1,9 @@
 <?php
+
+use Adianti\Database\TCriteria;
+use Adianti\Database\TFilter;
+use Adianti\Database\TRecord;
+
 /**
  * EtapaAtendimento Active Record
  * @author  <your-name-here>
